@@ -46,9 +46,13 @@ app.get('/', (req, res) => {
 // ✅ Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ SPA fallback - send index.html for any other route (after APIs and static)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// ✅ الحل النهائي للراوت العام
+app.use((req, res, next) => {
+  if (req.accepts('html')) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  } else {
+    next();
+  }
 });
 
 // ✅ Start server
