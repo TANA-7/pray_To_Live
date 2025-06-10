@@ -1,0 +1,627 @@
+body {
+  margin: 0;
+  font-family: "Cairo", sans-serif;
+  background-color: #f8f9fc;
+  color: #333;
+  direction: rtl;
+}
+
+/* ===== Reminder Section ===== */
+.reminder-section {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+.reminder-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.prayer-list {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+.prayer-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  background-color: #f1f3f9;
+  margin-bottom: 1rem;
+  color: #003566;
+  font-weight: bold;
+  transition: 0.5s;
+}
+.prayer-item .log-btn {
+  background-color: #0a6cb4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.prayer-item .log-btn:hover {
+  background-color: #084a80;
+}
+
+.reminder-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.spiritual-progress {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: relative;
+}
+/* الألوان حسب النسبة */
+.progress-fill.low-progress {
+  background: linear-gradient(90deg, #e53935, #ef5350);
+}
+
+.progress-fill.mid-progress {
+  background: linear-gradient(90deg, #fdd835, #ffeb3b);
+  color: #333;
+}
+
+.progress-fill.high-progress {
+  background: linear-gradient(90deg, #43a047, #66bb6a);
+}
+.progress-message {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #003566;
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  height: 1.6rem;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.progress-icon {
+  position: absolute;
+  left: 10px;
+  z-index: 2;
+  font-size: 1.2rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #8bc34a, #cddc39);
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.6rem;
+  border-radius: 50px;
+  padding-left: 30px;
+  transition: width 0.5s ease-in-out;
+  white-space: nowrap;
+}
+
+
+.next-prayer,
+.nearest-masjid,
+.motivational-message {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ===== Azkar Section ===== */
+.azkar-section {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.azkar-wrapper {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+}
+.zikr-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.zikr-count {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #4caf50;
+}
+.final-azkar {
+  background-color: #f9f9fb;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  animation: fadeIn 0.8s ease;
+  direction: rtl;
+  font-family: 'Arial', sans-serif;
+}
+
+.final-azkar h4 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #4a148c;
+  text-align: center;
+}
+
+.azkar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.azkar-list li {
+  background: #fff;
+  margin-bottom: 0.7rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #333;
+  transition: background 0.3s ease;
+  font-weight: 600;
+}
+
+.azkar-list li:hover {
+  background-color: #f0f4f8;
+}
+
+.azkar-list span {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.completion-message {
+  margin-top: 1.5rem;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.zikr-label {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+.semi-circle {
+  width: 100px;
+  height: 50px;
+}
+.progress-bg {
+  fill: none;
+  stroke: #ddd;
+  stroke-width: 8;
+}
+.progress-fill {
+  fill: none;
+  stroke: #4caf50;
+  stroke-width: 8;
+  stroke-dasharray: 125.66;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+/* ===== Todo Section ===== */
+.todo-section {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.todo-input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+#todo-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.todo-input-group button {
+  background: #0a6cb4;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* تصميم المهمة العادية */
+#todo-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* عند إكمال المهمة */
+#todo-list li.completed {
+  background: #e0f7e9;
+  color: #4caf50;
+}
+
+/* النص عند الإكمال */
+#todo-list li span.completed {
+  text-decoration: line-through;
+  color: #4caf50;
+  font-style: italic;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em; /* مسافة بين الأيقونة والنص */
+}
+
+/* ✅ أيقونة الصح */
+#todo-list li span.completed::before {
+  content: "✅";
+  font-size: 1rem;
+}
+
+
+
+
+/* ===== Weekly Prayer Table ===== */
+.prayer-table {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  direction: rtl;
+  text-align: center;
+}
+
+.prayer-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prayer-table th,
+.prayer-table td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+}
+
+.prayer-table th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+/* النقطة */
+.prayer-dot {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.prayer-dot.done {
+  background-color: #4caf50;
+  animation: pulse 0.6s ease;
+}
+
+.prayer-dot.missed {
+  background-color: #e53935;
+  animation: shake 0.4s ease;
+}
+
+
+/* ===== Fatwa Section ===== */
+.forum {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.question-box {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  min-height: 100px;
+  resize: vertical;
+}
+.forum-buttons {
+  display: flex;
+  gap: 1rem;
+}
+.forum-buttons button {
+  background-color: #0a6cb4;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== Responsive Fixes ===== */
+@media (max-width: 768px) {
+  .reminder-content {
+    flex-direction: column;
+  }
+  .todo-input-group {
+    flex-direction: column;
+  }
+  .azkar-wrapper{
+    flex-direction: column;
+  }
+}
+/* قسم التطوع */
+#volunteerModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.volunteer-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  text-align: right;
+  direction: rtl;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.volunteer-content h3 {
+  margin-bottom: 1rem;
+  color: #003566;
+  font-weight: 700;
+}
+.volunteer-content textarea,
+.volunteer-content input,
+.volunteer-content select {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: "Cairo", sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+}
+.volunteer-status-box {
+  margin: 20px auto;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  width: fit-content;
+  text-align: center;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+.volunteer-status-approved {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+.volunteer-status-rejected {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+.volunteer-status-pending {
+  background-color: #fff3cd;
+  color: #664d03;
+  border: 1px solid #ffeeba;
+}
+#volunteerStatus {
+  display: none;
+}
+
+/* الإشعارات */
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+}
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #d32f2f;
+  color: white;
+  padding: 3px 7px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+}
+.notification-panel {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  width: 320px;
+  max-height: 400px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  z-index: 10000;
+}
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ccc;
+  font-weight: 700;
+  color: #003566;
+}
+.close-btn {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  user-select: none;
+}
+.notification-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.notification-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+.notification-item.unread {
+  background-color: #f0f7ff;
+  font-weight: 700;
+}
+.notification-item.read {
+  background-color: #fff;
+  font-weight: 400;
+}
+.notification-item h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #003566;
+}
+.notification-item p {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  color: #555;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* نافذة عامة */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  font-family: "Cairo", sans-serif;
+}
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  font-weight: 700;
+  user-select: none;
+}
+
+/* عناصر مساعدة */
+.hidden {
+  display: none !important;
+}
+.prayer-item.locked {
+  background-color: #f1f1f1;
+  opacity: 0.5;
+}
+
+.prayer-item.active {
+  background-color: #e6f7ff;
+  border-right: 5px solid #0a6cb4;
+}
+
+.prayer-item.expired {
+  background-color: #ffe5e5;
+  border-right: 5px solid #d32f2f;
+  color: #b00020;
+}
+
+.prayer-item.prayed {
+  background-color: #d1f2d1;
+  border-right: 5px solid #4caf50;
+  color: #2e7d32;
+  
+}
+.prayer-item .log-btn:disabled {
+  background-color: #ccc;
+  color: #777;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ✅ أنيميشن لظهور الرسالة التحفيزية */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.motivational-message p.animated {
+  animation: fadeInUp 0.8s ease;
+}

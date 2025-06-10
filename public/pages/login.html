@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>تسجيل الدخول | بالصلاة نحيا</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="icon" type="image/png" href="../media/logo.png" />
+    <style>
+      body {
+        font-family: "Cairo", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f6f8;
+        color: #000814;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: 60%;
+        display: flex;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        background-color: #fff;
+        max-width: 100%;
+      }
+
+      .form-section {
+        flex: 2;
+        padding: 150px 75px;
+        background-color: #ffffff;
+      }
+
+      .form-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #001d3d;
+        margin-bottom: 30px;
+      }
+
+      form .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .form-group input {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+
+      .submit-btn {
+        background-color: #003566;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        background-color: #001d3d;
+      }
+
+      .side-section {
+        flex: 1;
+        background-color: #000;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .side-section h3 {
+        font-size: 22px;
+        margin: 5px;
+      }
+
+      .side-section p {
+        font-size: 17px;
+        margin: 3px;
+        color: #ccc;
+      }
+
+      .side-section img {
+        width: 150px;
+      }
+
+      .register-link {
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      .register-link a {
+        color: #0a6cb4;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .register-link a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-height: 800px) {
+        .container {
+          max-height: 100vh;
+        }
+        .side-section h3 {
+          font-size: 20px;
+        }
+
+        .side-section p {
+          font-size: 15px;
+        }
+
+        .side-section img {
+          width: 125px;
+        }
+        .login-link {
+          font-size: 14px;
+        }
+        .form-title {
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+
+        .form-group input {
+          padding: 10px;
+          font-size: 14px;
+        }
+
+        .form-section {
+          padding: 100px 50px;
+        }
+
+        .side-section {
+          padding: 15px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .container {
+          width: 100%;
+          height: 100vh;
+          flex-direction: column;
+          border-radius: 0;
+        }
+
+        .form-section {
+          padding: 30px 20px;
+        }
+
+        .side-section {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container fade-in">
+      <div class="side-section">
+        <a href="index.html"><img src="../media/logo.png" alt="شعار" /></a>
+        <h3>بالصلاة نحيا</h3>
+        <p>ابدأ موعدك مع الرحمن</p>
+        <div class="register-link">
+          ليس لديك حساب؟ <a href="sign-up.html">سجل الآن</a>
+        </div>
+      </div>
+      <div class="form-section">
+        <h2 class="form-title">تسجيل الدخول إلى حسابك</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              placeholder="البريد الإلكتروني"
+              required
+            />
+            <input
+              type="password"
+              id="password"
+              placeholder="كلمة المرور"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <button class="submit-btn" type="submit">تسجيل الدخول</button>
+          </div>
+          <div id="loginMsg" style="color: red; font-weight: bold"></div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const msg = document.getElementById("loginMsg");
+
+          if (!email || !password) {
+            msg.style.color = "red";
+            msg.innerText = "يرجى تعبئة جميع الحقول";
+            return;
+          }
+
+          try {
+            const res = await fetch("http://localhost:5000/api/auth/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, password }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+              msg.style.color = "red";
+              msg.innerText = data.msg || "فشل في تسجيل الدخول";
+              return;
+            }
+
+            msg.style.color = "green";
+            msg.innerText = "تم تسجيل الدخول بنجاح! جاري التحويل...";
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("userId", data.user._id);
+            localStorage.setItem("userName", data.user.username);
+            localStorage.setItem("userEmail", data.user.email);
+
+            setTimeout(() => {
+              if (data.user.role === "admin") {
+                window.location.href = "admin.html";
+              } else if (data.user.role === "supervisor") {
+                window.location.href = "supervisor.html";
+              } else {
+                window.location.href = "user.html";
+              }
+            }, 1500);
+          } catch (error) {
+            msg.style.color = "red";
+            msg.innerText = "حدث خطأ أثناء الاتصال بالسيرفر";
+            console.error(error);
+          }
+        });
+    </script>
+  </body>
+</html>

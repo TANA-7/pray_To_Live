@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة المتابعة</title>
+  <link rel="stylesheet" href="../styles/test.css">
+</head>
+<body>
+
+  <!-- ✅ الهيدر: يبقى كما هو -->
+  <header class="header">
+    الهيدر
+  </header>
+
+  <!-- ✅ رسالة التذكير -->
+  <!-- هذا القسم يحتوي على عمودين:
+       - العمود الأيمن فيه قائمة الصلوات مع أوقات كل صلاة وزر "تسجيل".
+       - العمود الأيسر فيه:
+         1. مؤشر التقدم الروحي (progress bar).
+         2. وقت الصلاة القادمة (من API).
+         3. أقرب مسجد (من API).
+         4. رسالة تحفيزية عشوائية.
+  -->
+  <section class="reminder-section">
+    <div class="reminder-content">
+      <div class="prayer-list">
+        <h3>الصلوات</h3>
+        <!-- كل عنصر صلاة يحتوي على اسم، وقت، وزر تسجيل -->
+        <div class="prayer-item">
+          <span class="prayer-name">الفجر</span>
+          <span class="prayer-time">04:30 ص</span>
+          <button class="log-btn">تسجيل</button>
+        </div>
+        <!-- تكرار باقي الصلوات بنفس النمط -->
+        ...
+      </div>
+
+      <div class="reminder-sidebar">
+        <!-- مؤشر التقدم الروحي عبارة عن div بعرض نسبي -->
+        <div class="spiritual-progress">
+          <h4>مؤشر التقدم الروحي</h4>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 60%;"></div>
+          </div>
+        </div>
+        <!-- يظهر الوقت المتبقي للصلاة القادمة -->
+        <div class="next-prayer">
+          <strong>الصلاة القادمة:</strong>
+          <span id="nextPrayerTime">بعد 00:00:00</span>
+        </div>
+        <!-- أقرب مسجد (يُحدث من API مستقبلاً) -->
+        <div class="nearest-masjid">
+          <strong>أقرب مسجد:</strong>
+          <span id="nearestMasjid">------</span>
+        </div>
+        <!-- رسالة تحفيزية تظهر بشكل عشوائي -->
+        <div class="motivational-message">
+          <strong>رسالة تحفيزية:</strong>
+          <p id="motivationalQuote">"إن الصلاة تنهى عن الفحشاء والمنكر"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ✅ أذكار بعد الصلاة -->
+  <!-- كل عنصر يحتوي على:
+       - SVG نصف دائرة (نصف دائرة داخلية وخارجية).
+       - عداد يظهر الرقم الحالي.
+       - عنوان الذكر.
+       عند الضغط على العنصر:
+       - ينقص العداد.
+       - تمتلئ نصف الدائرة تدريجياً (strokeDashoffset).
+  -->
+  <section class="azkar-section">
+    <h3>اذكار ما بعد الصلاة</h3>
+    <div class="azkar-wrapper">
+      <div class="zikr-item" data-max="33" data-current="33">
+        <svg viewBox="0 0 100 50" class="semi-circle">
+          <path d="M10,50 A40,40 0 0,1 90,50" class="progress-bg"/>
+          <path d="M10,50 A40,40 0 0,1 90,50" class="progress-fill"/>
+        </svg>
+        <div class="zikr-count">33</div>
+        <div class="zikr-label">سبحان الله</div>
+      </div>
+      <!-- عناصر أخرى بنفس النمط: "الحمد لله"، "الله أكبر" -->
+      ...
+    </div>
+  </section>
+
+
+  <!-- ✅ قائمة المهام -->
+  <!-- To-do list بسيط:
+       - حقل إدخال نص.
+       - زر إضافة مهمة.
+       - قائمة تعرض المهام.
+       - كل مهمة يمكن تمييزها كمكتملة أو حذفها.
+  -->
+  <section class="todo-section">
+    <h3>قائمة المهام</h3>
+    <div class="todo-input-group">
+      <input type="text" id="todo-input" placeholder="أدخل المهمة هنا...">
+      <button onclick="addTask()">إضافة</button>
+    </div>
+    <ul id="todo-list"></ul>
+  </section>
+
+
+  <!-- ✅ جدول الصلاة الأسبوعي -->
+  <!-- جدول بسيط لعرض تتبع الصلوات خلال الأسبوع:
+       - صفوف تمثل الصلوات.
+       - أعمدة تمثل الأيام.
+       - النقطة "●" تعني الصلاة أُديت.
+  -->
+  <section class="prayer-table">
+    <h2>محور الأسبوع</h2>
+    <p>التاريخ بين 00/00/0000 - 00/00/0000</p>
+    <table>
+      <thead>
+        <tr>
+          <th>الصلاة</th>
+          <th>الأحد</th>
+          ...
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>الفجر</td><td>●</td>...</tr>
+        ...
+      </tbody>
+    </table>
+  </section>
+
+
+  <!-- ✅ قسم الفتوى -->
+  <!-- قسم بسيط يحتوي على:
+       - مربع نص لكتابة سؤال.
+       - زر "إرسال".
+       - زر "الفتاوى السابقة".
+  -->
+  <section class="forum">
+    <h2>فتوى</h2>
+    <div class="question-box">كتابة الفتوى</div>
+    <div class="forum-buttons">
+      <button>إرسال</button>
+      <button>الفتاوى السابقة </button>
+    </div>
+  </section>
+
+
+  <!-- ✅ الفوتر: بدون تغيير -->
+  <footer class="footer">
+    الفوتر
+  </footer>
+
+
+<!-- ✅ جافا سكريبت للتحكم -->
+<script>
+  // ✅ سكريبت الأذكار:
+  // عند الضغط على عنصر الذكر:
+  // - يُنقص العدد.
+  // - يتم تعديل strokeDashoffset لملء النصف دائرة.
+  document.querySelectorAll('.zikr-item').forEach(item => {
+    item.addEventListener('click', () => {
+      let current = parseInt(item.dataset.current);
+      const max = parseInt(item.dataset.max);
+      if (current > 0) {
+        current--;
+        item.dataset.current = current;
+        item.querySelector('.zikr-count').textContent = current;
+
+        const progress = ((max - current) / max) * 125.66;
+        const fill = item.querySelector('.progress-fill');
+        fill.style.strokeDashoffset = 125.66 - progress;
+      }
+    });
+  });
+
+  // ✅ سكريبت قائمة المهام:
+  function addTask() {
+    const input = document.getElementById('todo-input');
+    const taskText = input.value.trim();
+    if (taskText === '') return;
+
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span>${taskText}</span>
+      <div class="todo-actions">
+        <button onclick="toggleTask(this)">✔️</button>
+        <button onclick="deleteTask(this)">🗑️</button>
+      </div>
+    `;
+    document.getElementById('todo-list').appendChild(li);
+    input.value = '';
+  }
+
+  function deleteTask(btn) {
+    btn.closest('li').remove();
+  }
+
+  function toggleTask(btn) {
+    const li = btn.closest('li');
+    li.classList.toggle('completed');
+  }
+</script>
+
+</body>
+</html>

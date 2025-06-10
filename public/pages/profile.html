@@ -1,0 +1,89 @@
+<!-- profile.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الملف الشخصي | بالصلاة نحيا</title>
+    <link rel="stylesheet" href="../styles/layout.css" />
+    <link rel="stylesheet" href="../styles/profile-style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link rel="icon" type="image/png" href="../media/logo.png" />
+  </head>
+  <body>
+        <header class="layout-header" dir="rtl">
+      <div class="layout-container">
+        <div class="layout-logo">
+          <img src="../media/logo.png" alt="Logo" />
+          <p>بالصلاة نحيا</p>
+        </div>
+        <nav class="layout-nav">
+          <ul>
+            <li><a onclick="history.back();">عودة</a></li>
+            <button id="logoutBtn" class="btn-primary">تسجيل الخروج</button>
+          </ul>
+        </nav>
+        <div class="layout-list-icon">
+        <i class="fa-solid fa-arrow-left" onclick="history.back();"></i>
+        </div>
+      </div>
+    </header>
+    <aside class="layout-sidebar" id="layoutSidebar">
+      <ul>
+            <li><a href="user.html">لوحة الصلاة</a></li>
+        <li><a href="#" id="logoutBtnSide">تسجيل الخروج</a></li>
+      </ul>
+    </aside>
+    <div class="container">
+      <h2>الملف الشخصي</h2>
+
+      <!-- عرض المعلومات -->
+<div id="profileView">
+  <p><i class="fa-solid fa-user"></i><strong>الاسم الكامل:</strong> <span id="username"></span></p>
+  <p><i class="fa-solid fa-envelope"></i><strong>البريد:</strong> <span id="email"></span></p>
+  <p><i class="fa-solid fa-phone"></i><strong>رقم الهاتف:</strong> <span id="phone"></span></p>
+  <p><i class="fa-solid fa-city"></i><strong>المدينة:</strong> <span id="city"></span></p>
+  <p><i class="fa-solid fa-flag"></i><strong>الدولة:</strong> <span id="country"></span></p>
+  <p><i class="fa-solid fa-hourglass-half"></i><strong>العمر:</strong> <span id="age"></span></p>
+  <p id="extraInfo"></p>
+  <button id="editBtn"><i class="fa-solid fa-pen"></i> تعديل</button>
+</div>
+
+
+      <!-- نموذج التعديل -->
+      <div id="profileEdit" style="display: none">
+        <form id="editForm">
+          <input
+            type="text"
+            id="editUsername"
+            placeholder="الاسم الأول"
+          /><br />
+          <input type="text" id="editFatherName" placeholder="اسم الأب" /><br />
+          <input
+            type="text"
+            id="editLastName"
+            placeholder="اسم العائلة"
+          /><br />
+          <input
+            type="email"
+            id="editEmail"
+            placeholder="البريد الإلكتروني"
+          /><br />
+          <input type="text" id="editPhone" placeholder="رقم الهاتف" /><br />
+          <input type="text" id="editCity" placeholder="المدينة" /><br />
+          <input type="text" id="editCountry" placeholder="الدولة" /><br />
+          <button type="submit" id="saveBtn">حفظ التغييرات</button>
+          <button type="button" onclick="toggleEdit(false)">إلغاء</button>
+        </form>
+      </div>
+
+      <p id="updateMsg"></p>
+    </div>
+    <div id="notifyBox" class="notify hidden"></div>
+    <script src="../js/profile-script.js"></script>
+  </body>
+</html>

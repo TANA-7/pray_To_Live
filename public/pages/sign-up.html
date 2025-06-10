@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>تسجيل حساب جديد | بالصلاة نحيا</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="icon" type="image/png" href="../media/logo.png" />
+    <style>
+      body {
+        font-family: "Cairo", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f6f8;
+        color: #000814;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: 50%;
+        display: flex;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        background-color: #fff;
+        max-width: 100%;
+      }
+
+      .form-section {
+        flex: 2;
+        padding: 40px;
+        background-color: #ffffff;
+      }
+
+      .form-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #001d3d;
+        margin-bottom: 30px;
+      }
+
+      form .form-group {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        flex: 1;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        min-width: 0;
+      }
+
+      .form-group label {
+        margin-left: 10px;
+        font-weight: bold;
+      }
+
+      .form-group.radio {
+        align-items: center;
+        gap: 30px;
+      }
+
+      .form-group.radio label {
+        font-weight: normal;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background-color: #003566;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        background-color: #001d3d;
+      }
+
+      .side-section {
+        flex: 1;
+        background-color: #000;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .side-section h3 {
+        font-size: 22px;
+        margin: 5px;
+      }
+
+      .side-section p {
+        font-size: 17px;
+        margin: 3px;
+        color: #ccc;
+      }
+
+      .side-section img {
+        width: 150px;
+      }
+
+      .login-link {
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      .login-link a {
+        color: #0a6cb4;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* إذا كان طول الشاشة أقل من 800 */
+      @media (max-height: 800px) {
+        .container {
+          max-height: 100vh;
+          overflow-y: auto;
+        }
+
+      .side-section h3 {
+        font-size: 20px;
+      }
+
+      .side-section p {
+        font-size: 15px;
+      }
+
+      .side-section img {
+        width: 125px;
+      }
+      .login-link {
+        font-size: 14px;
+      }
+        .form-title {
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+          padding: 7px;
+          font-size: 13px;
+        }
+
+        .form-section {
+          padding: 20px;
+        }
+
+        .side-section {
+          padding: 15px;
+        }
+      }
+
+      /* إذا كان عرض الشاشة أقل من 992 */
+      @media (max-width: 992px) {
+        .container {
+          width: 100%;
+          border-radius: 0;
+
+          flex-direction: column;
+        }
+
+        .form-section {
+          padding: 30px 20px;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+        }
+
+        .side-section {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container fade-in">
+      <div class="side-section">
+        <a href="index.html"><img src="../media/logo.png" alt="صورة شرح" /></a>
+        <h3>بالصلاة نحيا</h3>
+        <p>ابدأ موعدك مع الرحمن</p>
+        <div class="login-link">
+          لديك حساب؟ <a href="login.html">سجّل الدخول من هنا</a>
+        </div>
+      </div>
+      <div class="form-section">
+        <h2 class="form-title">قم بملء استمارة التسجيل</h2>
+        <form id="signupForm">
+          <div class="form-group">
+            <input type="text" id="username" placeholder="الاسم الأول" required />
+            <input type="text" id="fatherName" placeholder="اسم الأب" />
+<input type="text" id="lastName" placeholder="الاسم الأخير" />
+          </div>
+        
+          <div class="form-group">
+            <input type="email" id="email" placeholder="البريد الإلكتروني" required />
+<input type="text" id="phone" placeholder="رقم الهاتف" />
+          </div>
+        
+          <div class="form-group">
+            <input type="password" id="password" placeholder="كلمة المرور" required />
+            <input type="password" placeholder="تأكيد كلمة المرور" />
+          </div>
+        
+          <div class="form-group">
+<input type="date" id="birthDate" placeholder="تاريخ الميلاد" />
+          </div>
+        
+          <div class="form-group radio">
+            <label>النوع:</label>
+            <label><input type="radio" name="gender" value="ذكر"/> ذكر</label>
+            <label><input type="radio" name="gender" value="أنثى"/> أنثى</label>
+          </div>
+        
+          <div class="form-group">
+            <input type="text" id="country" placeholder="بلد الإقامة" />
+            <input type="text" id="city" placeholder="المدينة" />
+          </div>
+        
+          <div class="form-group radio">
+            <label>هل أنت محافظ على الصلاة:</label>
+            <label><input type="radio" name="mohafez" value="نعم"/> نعم</label>
+            <label><input type="radio" name="mohafez" value="لا"/> لا</label>
+          </div>
+        
+          <div class="form-group">
+            <textarea
+              rows="3"
+              placeholder="في حالة الإجابة بـ (لا)، برأيك ما الذي يجعلك تترك الصلاة؟"
+              id="reasonLeavePrayer"
+            ></textarea>
+          </div>
+        
+          <div class="form-group">
+            <button class="submit-btn" type="submit">تسجيل</button>
+          </div>
+          <div id="signupMsg" style="margin-top: 10px; font-weight: bold;"></div>
+
+        </form>
+      </div>
+    </div>
+<script>
+  document.getElementById('signupForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+const formData = {
+  username: document.getElementById('username').value.trim(),
+  email: document.getElementById('email').value.trim(),
+  password: document.getElementById('password').value.trim(),
+  fatherName: document.getElementById('fatherName').value.trim(),
+  lastName: document.getElementById('lastName').value.trim(),
+  phone: document.getElementById('phone').value.trim(),
+  birthDate: document.getElementById('birthDate').value,
+  gender: document.querySelector('input[name="gender"]:checked')?.value,
+  country: document.getElementById('country').value.trim(),
+  city: document.getElementById('city').value.trim(),
+  mohafez: document.querySelector('input[name="mohafez"]:checked')?.value,
+  reasonLeavePrayer: document.getElementById('reasonLeavePrayer').value.trim()
+};
+
+
+
+    const msg = document.getElementById('signupMsg');
+
+    // تحقق من الحقول
+    for (const key in formData) {
+      if (!formData[key]) {
+        msg.style.color = 'red';
+        msg.innerText = 'يرجى تعبئة جميع الحقول';
+        return;
+      }
+    }
+
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        msg.style.color = 'red';
+        msg.innerText = data.msg || 'حدث خطأ أثناء إنشاء الحساب';
+        return;
+      }
+
+      msg.style.color = 'green';
+      msg.innerText = 'تم إنشاء الحساب بنجاح، جاري التحويل لتسجيل الدخول...';
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 2000);
+    } catch (err) {
+      msg.style.color = 'red';
+      msg.innerText = 'خطأ في الاتصال بالسيرفر';
+    }
+  });
+</script>
+
+
+  </body>
+</html>

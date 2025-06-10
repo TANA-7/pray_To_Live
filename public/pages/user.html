@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة المتابعة</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/layout.css" />
+    <link rel="stylesheet" href="../styles/user-style.css" />
+    <link rel="icon" type="image/png" href="../media/logo.png" />
+    <script
+      src="https://kit.fontawesome.com/fc17f689ee.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- ✅ الهيدر -->
+    <header class="layout-header" dir="rtl">
+      <div class="layout-container">
+        <div class="layout-logo">
+          <img src="../media/logo.png" alt="Logo" />
+          <p>بالصلاة نحيا</p>
+        </div>
+        <nav class="layout-nav">
+          <ul>
+            <li><a href="#prayer-streak">جدول الاسبوع</a></li>
+            <li><a href="#tasks">مهامي</a></li>
+            <li><a href="#" onclick="openVolunteerForm()">التطوع</a></li>
+            <li class="btns-li">
+              <div class="notification-icon" onclick="toggleNotifications()">
+                <i class="fa-solid fa-comment"></i>
+                <span id="notificationCount" class="badge">0</span>
+              </div>
+              <i
+                class="fa-solid fa-circle-user"
+                onclick="window.open('profile.html','_parent')"
+              ></i>
+            </li>
+
+            <button id="logoutBtn" class="btn-primary">تسجيل الخروج</button>
+          </ul>
+        </nav>
+        <div class="layout-list-icon">
+          <i
+            class="fa-solid fa-circle-user"
+            onclick="window.open('profile.html','_parent')"
+          ></i>
+          <i class="fa-solid fa-bars" onclick="toggleSidebar()"></i>
+        </div>
+      </div>
+    </header>
+    <aside class="layout-sidebar" id="layoutSidebar">
+      <ul>
+        <li><a href="#prayer-streak">جدول الاسبوع</a></li>
+        <li><a href="#tasks">مهامي</a></li>
+        <li><a href="#" onclick="openVolunteerForm()">التطوع</a></li>
+        <li><a href="#" id="logoutBtnSide">تسجيل الخروج</a></li>
+      </ul>
+    </aside>
+    <div
+      id="volunteerStatus"
+      style="margin-top: 15px; font-weight: bold"
+      dir="rtl"
+    ></div>
+
+    <!-- ✅ رسالة الترحيب -->
+    <h2 id="welcomeUser" style="text-align: center; color: #003566">
+      مرحبًا، ...
+    </h2>
+
+    <!-- ✅ قسم التذكير بالصلاة -->
+    <section class="reminder-section">
+      <div class="reminder-content">
+        <div class="prayer-list">
+          <h3>الصلوات</h3>
+          <div class="prayer-item" id="fajrCard">
+            <span class="prayer-name">الفجر</span
+            ><span class="prayer-time" id="timeFajr">04:30</span
+            ><button class="log-btn" id="fajrBtn">تسجيل</button>
+          </div>
+          <div class="prayer-item" id="dhuhrCard">
+            <span class="prayer-name">الظهر</span
+            ><span class="prayer-time" id="timeDhuhr">12:10</span
+            ><button class="log-btn" id="dhuhrBtn">تسجيل</button>
+          </div>
+          <div class="prayer-item" id="asrCard">
+            <span class="prayer-name">العصر</span
+            ><span class="prayer-time" id="timeAsr">15:45</span
+            ><button class="log-btn" id="asrBtn">تسجيل</button>
+          </div>
+          <div class="prayer-item" id="maghribCard">
+            <span class="prayer-name">المغرب</span
+            ><span class="prayer-time" id="timeMaghrib">18:30</span
+            ><button class="log-btn" id="maghribBtn">تسجيل</button>
+          </div>
+          <div class="prayer-item" id="ishaCard">
+            <span class="prayer-name">العشاء</span
+            ><span class="prayer-time" id="timeIsha">20:00</span
+            ><button class="log-btn" id="ishaBtn">تسجيل</button>
+          </div>
+        </div>
+
+        <div class="reminder-sidebar">
+          <div class="spiritual-progress">
+            <h4>مؤشر التقدم الروحي</h4>
+            <div class="progress-bar">
+              <div class="progress-fill" id="spiritualProgress">0%</div>
+            </div>
+            <p id="progressMessage" class="progress-message"></p>
+          </div>
+
+          <div class="next-prayer">
+            <strong>الصلاة القادمة:</strong>
+            <span id="nextPrayerTime">بعد 00:00:00</span>
+          </div>
+          <div class="nearest-masjid">
+            <strong>أقرب مسجد:</strong>
+            <a id="nearestMasjid" href="#" target="_blank">------</a>
+          </div>
+
+          <div class="motivational-message">
+            <strong>رسالة تحفيزية:</strong>
+            <p id="motivationalQuote">"إن الصلاة تنهى عن الفحشاء والمنكر"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ قسم أذكار بعد الصلاة -->
+    <section class="azkar-section">
+      <h3>أذكار بعد الصلاة</h3>
+      <div class="azkar-wrapper" id="zikrCounterSection">
+        <div
+          class="zikr-item"
+          data-max="33"
+          data-current="0"
+          data-type="سبحان الله"
+        >
+          <svg viewBox="0 0 100 50" class="semi-circle">
+            <path d="M10,50 A40,40 0 0,1 90,50" class="progress-bg" />
+            <path d="M10,50 A40,40 0 0,1 90,50" class="progress-fill" />
+          </svg>
+          <div class="zikr-count">0</div>
+          <div class="zikr-label">سبحان الله</div>
+        </div>
+
+        <div
+          class="zikr-item"
+          data-max="33"
+          data-current="0"
+          data-type="الحمد لله"
+        >
+          <svg viewBox="0 0 100 50" class="semi-circle">
+            <path d="M10,50 A40,40 0 0,1 90,50" class="progress-bg" />
+            <path d="M10,50 A40,40 0 0,1 90,50" class="progress-fill" />
+          </svg>
+          <div class="zikr-count">0</div>
+          <div class="zikr-label">الحمد لله</div>
+        </div>
+
+        <div
+          class="zikr-item"
+          data-max="34"
+          data-current="0"
+          data-type="الله أكبر"
+        >
+          <svg viewBox="0 0 100 50" class="semi-circle">
+            <path d="M10,50 A40,40 0 0,1 90,50" class="progress-bg" />
+            <path d="M10,50 A40,40 0 0,1 90,50" class="progress-fill" />
+          </svg>
+          <div class="zikr-count">0</div>
+          <div class="zikr-label">الله أكبر</div>
+        </div>
+      </div>
+
+      <!-- ✅ بعد الانتهاء -->
+      <div id="finalAzkarSection" class="final-azkar hidden">
+        <h4>🌸 أذكار ختامية:</h4>
+        <ul class="azkar-list">
+          <li>أَسْتَغْفِرُ اللَّهَ (3 مرات)</li>
+          <li>
+            اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ تَبَارَكْتَ يَا ذَا
+            الْجَلَالِ وَالإكْرَامِ (مرة واحدة)
+          </li>
+          <li>
+            لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ
+            وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ (مرة واحدة)
+          </li>
+          <li>
+            اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ
+            الْمُتَطَهِّرِينَ (مرة واحدة)
+          </li>
+          <li>آية الكرسي (مرة واحدة)</li>
+          <li>سورة الإخلاص</li>
+          <li>سورة الفلق</li>
+          <li>سورة الناس</li>
+        </ul>
+
+        <p class="completion-message">
+          ✅ أحسنت! عد لنا في الصلاة القادمة بإذن الله.
+        </p>
+      </div>
+    </section>
+
+    <!-- ✅ قائمة المهام اليومية -->
+    <section id="todo-section" class="todo-section">
+      <h3>قائمة مهامي الروحية</h3>
+      <div class="todo-input-group">
+        <input type="text" id="todo-input" placeholder="أدخل المهمة هنا..." />
+        <button id="add-task-btn">إضافة</button>
+      </div>
+      <ul id="todo-list"></ul>
+    </section>
+
+   <!-- ✅ جدول الصلوات الأسبوعي -->
+<section id="prayer-table" class="prayer-table">
+  <h2>جدول الصلاة الأسبوعي</h2>
+  <p>من: 00/00/0000 إلى 00/00/0000</p>
+  <table>
+    <thead>
+      <tr>
+        <th>الصلاة</th>
+        <th>الأحد</th>
+        <th>الإثنين</th>
+        <th>الثلاثاء</th>
+        <th>الأربعاء</th>
+        <th>الخميس</th>
+        <th>الجمعة</th>
+        <th>السبت</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>الفجر</td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+      </tr>
+      <tr>
+        <td>الظهر</td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+      </tr>
+      <tr>
+        <td>العصر</td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+      </tr>
+      <tr>
+        <td>المغرب</td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+      </tr>
+      <tr>
+        <td>العشاء</td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+        <td><i class="fa-regular fa-circle prayer-icon"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+    <!-- ✅ قسم الفتوى -->
+    <section class="forum">
+      <h2>اسأل فتوى</h2>
+      <textarea
+        class="question-box"
+        placeholder="اكتب سؤالك الشرعي هنا..."
+      ></textarea>
+      <div class="forum-buttons">
+        <button>إرسال</button>
+        <button>عرض الفتاوى السابقة</button>
+      </div>
+    </section>
+
+    <!-- ✅ الفوتر -->
+    <div id="volunteerModal">
+      <div class="volunteer-content">
+        <h3>طلب تطوع</h3>
+        <form id="volunteerForm">
+          <label>هل تحفظ شيئًا من القرآن؟</label>
+          <select id="memorizesQuran" required onchange="toggleQuran()">
+            <option value="">اختر</option>
+            <option value="نعم">نعم</option>
+            <option value="لا">لا</option>
+          </select>
+          <input
+            type="text"
+            id="howMuchQuran"
+            placeholder="كم جزء تحفظ؟"
+            style="display: none"
+          />
+
+          <label>هل تدرس العلم الشرعي؟</label>
+          <select id="studiesSharia" required onchange="toggleSharia()">
+            <option value="">اختر</option>
+            <option value="نعم">نعم</option>
+            <option value="لا">لا</option>
+          </select>
+          <input
+            type="text"
+            id="scholars"
+            placeholder="من هم شيوخك؟"
+            style="display: none"
+          />
+
+          <textarea
+            id="motivation"
+            placeholder="ما الذي دفعك للتطوع بهذا البرنامج؟"
+            required
+          ></textarea>
+          <textarea
+            id="adviceExample"
+            placeholder="تخيل أن أمامك شخص غير محافظ على الصلاة، كيف تنصحه؟"
+            required
+          ></textarea>
+          <button type="submit">إرسال الطلب</button>
+          <button type="button" onclick="closeVolunteerForm()">إلغاء</button>
+        </form>
+      </div>
+    </div>
+    <div id="notifyBox" class="notify hidden"></div>
+    <footer class="layout-footer">
+      <div class="layout-footer-container">
+        <div class="layout-footer-section">
+          <ul>
+            <li><a href="">شروط الخدمة</a></li>
+            <li><a href="">تواصل معنا</a></li>
+          </ul>
+          <div class="layout-social-icons">
+            <a
+              href="https://www.facebook.com/profile.php?id=61571734263777"
+              target="_blank"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://www.instagram.com/pray_2_live" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="https://t.me/pray_2l_ive" target="_blank"
+              ><i class="fa-brands fa-telegram"></i
+            ></a>
+            <a
+              href="https://whatsapp.com/channel/0029Vb384f2GZNClhWzUWD1P"
+              target="_blank"
+              ><i class="fa-brands fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+        <div class="layout-footer-section">
+          <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="#" onclick="openVolunteerForm()">التطوع</a></li>
+            <li><a href="sign-up.html">انضم إلينا</a></li>
+          </ul>
+        </div>
+        <div class="layout-footer-brand">
+          <img src="../media/logo.png" alt="Logo" />
+          <h3>بالصلاة نحيا</h3>
+          <p>ابدأ موعدك مع الرحمن</p>
+        </div>
+      </div>
+      <div class="layout-copyright">
+        <p>© 2025 جميع الحقوق محفوظة | بالصلاة نحيا</p>
+      </div>
+    </footer>
+    <div id="notificationPanel" class="notification-panel hidden">
+      <div class="panel-header">
+        <span>الإشعارات</span>
+        <i
+          class="fa-solid fa-xmark close-btn"
+          onclick="toggleNotifications()"
+        ></i>
+      </div>
+      <ul id="notificationList" class="notification-list">
+        <!-- الإشعارات ستُضاف هنا ديناميكيًا -->
+      </ul>
+    </div>
+    <div id="messageModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close" onclick="closeMessageModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalMessage"></p>
+        <p id="modalSender"></p>
+        <div id="replySection"></div>
+        <button onclick="deleteMessage()">حذف</button>
+      </div>
+    </div>
+
+    <script src="../js/user-script.js"></script>
+  </body>
+</html>

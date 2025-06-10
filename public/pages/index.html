@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>بالصلاة نحيا</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/home.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="../media/logo.png" />
+    <script
+      src="https://kit.fontawesome.com/fc17f689ee.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="buttons">
+          <div class="list">
+            <i class="fa-solid fa-list" onclick="open_cart()"></i>
+          </div>
+          <button
+            class="signup"
+            onclick="window.location.href='sign-up.html'"
+          >
+            انضم الينا
+          </button>
+          <button class="login" onclick="window.location.href='login.html'">تسجيل الدخول</button>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#aboutUs">الميزات</a></li>
+            <li>
+              <a href="login.html"
+                >التطوع</a
+              >
+            </li>
+            <li><a href="index.html">الرئيسية</a></li>
+          </ul>
+        </nav>
+        <div class="logo">
+          <p>بالصلاة نحيا</p>
+          <img src="../media/logo.png" alt="بالصلاة ننجا" />
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="cart">
+        <ul>
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="sign-up.html">التسجيل</a></li>
+          <li><a href="login.html">التطوع</a></li>
+        </ul>
+        <div></div>
+      </div>
+      <div class="landing">
+        <h1 class="fade-in" style="animation-delay: 0.2s;">بالصلاة نحيا</h1>
+        <p class="fade-in" style="animation-delay: 0.4s;">
+          هو مبادرة تربوية تهدف إلى مساعدة الأفراد على الالتزام بالصلاة، من خلال
+          التوجيه والدعم اليومي، لنصل معًا إلى حياة مليئة بالنور والسكينة.
+        </p>
+        <div class="buttons fade-in" style="animation-delay: 0.6s;">
+          <button
+          onclick="window.location.href='sign-up.html'"
+          >
+            انضم الينا
+          </button>
+          <button onclick="window.location.href='login.html'">تسجيل الدخول</button>
+        </div>
+      </div>
+      <div class="counter">
+        <div class="users">
+          <i class="fa-solid fa-users"></i>
+          <p>المشتركين</p>
+          <span>+100</span>
+        </div>
+        <div class="countries">
+          <i class="fa-solid fa-earth-americas"></i>
+          <p>الدول</p>
+          <span>+5</span>
+        </div>
+        <div class="admins">
+          <i class="fa-solid fa-user-tie"></i>
+          <p>المشرفين</p>
+          <span>+30</span>
+        </div>
+      </div>
+      <section id="daily-verse" class="verse-section">
+        <h2>تذكير من القرآن والسنة</h2>
+        <p id="verse-text">"إن الصلاة كانت على المؤمنين كتابًا موقوتًا"</p>
+      </section>      
+      <div class="aboutUs" id="aboutUs">
+        <h2>ما نقدم لك</h2>
+        <div class="cards">
+          <div>
+            <i class="fas fa-check-circle"></i>
+            <p>نظام متابعة يومي للصلاة يساعدك على الثبات والاستمرار</p>
+          </div>
+          <div>
+            <i class="fas fa-users"></i>
+            <p>مجتمع داعم من المشتركين والمتطوعين يشجعك على الالتزام</p>
+          </div>
+          <div>
+            <i class="fas fa-lightbulb"></i>
+            <p>محتوى توعوي مميز يعينك على فهم قيمة الصلاة وأثرها في حياتك</p>
+          </div>
+          <div>
+            <i class="fas fa-gift"></i>
+            <p>مسابقات وجوائز تحفيزية لزيادة الدافعية والمنافسة في الخير</p>
+          </div>
+          <div>
+            <i class="fas fa-hands-helping"></i>
+            <p>إمكانية التطوع والمساهمة في نشر الخير وبناء مجتمع مصلٍّ</p>
+          </div>
+          <div>
+            <i class="fas fa-headset"></i>
+            <p>دعم مستمر واستشارات لمساعدتك في التغلب على الصعوبات</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-links">
+          <ul>
+            <li><a href="">شروط الخدمة</a></li>
+            <li><a href="">تواصل معنا</a></li>
+          </ul>
+          <div class="social-icons">
+            <a
+              href="https://www.facebook.com/profile.php?id=61571734263777"
+              target="_blank"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://www.instagram.com/pray_2_live" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="https://t.me/pray_2l_ive" target="_blank"
+              ><i class="fa-brands fa-telegram"></i
+            ></a>
+            <a
+              href="https://whatsapp.com/channel/0029Vb384f2GZNClhWzUWD1P"
+              target="_blank"
+              ><i class="fa-brands fa-whatsapp" target="_blank"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li>
+              <a href="login.html"
+                >تطوع</a
+              >
+            </li>
+            <li>
+              <a href="sign-up.html"
+                >انضم إلينا</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-logo">
+          <img src="../media/logo.png" alt="بالصلاة نحيا" />
+          <h3>بالصلاة نحيا</h3>
+          <p>ابدا موعد مع الرحمن</p>
+        </div>
+      </div>
+    </footer>
+    <div class="copyright">
+      <p>© 2025 جميع الحقوق محفوظة | بالصلاة نحيا</p>
+    </div>
+  </body>
+  <script src="../js/main.js"></script>
+</html>
