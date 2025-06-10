@@ -41,6 +41,20 @@ mongoose.connect(process.env.MONGO_URI, {
 app.get('/', (req, res) => {
   res.send('Welcome to PrayToLive API!');
 });
+from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+import os
+
+app = FastAPI()
+
+# تقديم ملفات static
+app.mount("/static", StaticFiles(directory="public"), name="static")
+
+# الصفحة الرئيسية (index.html)
+@app.get("/")
+def read_root():
+    return FileResponse("public/pages/index.html")
 
 // ✅ بدء التشغيل
 app.listen(PORT, () => {
