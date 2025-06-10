@@ -41,8 +41,12 @@ mongoose.connect(process.env.MONGO_URI, {
 app.get('/', (req, res) => {
   res.send('Welcome to PrayToLive API!');
 });
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ✅ بدء التشغيل
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);
+});
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
