@@ -41,22 +41,6 @@ mongoose.connect(process.env.MONGO_URI, {
 app.get('/', (req, res) => {
   res.send('Welcome to PrayToLive API!');
 });
-const path = require('path');
-const express = require('express');
-const app = express();
-
-// خدم ملفات static من مجلد public
-app.use(express.static(path.join(__dirname, 'public')));
-
-// لو أي طلب ما تم التعامل معه (غير API)، أرسل ملف index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// باقي إعدادات السيرفر والـ API routes
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 // ✅ بدء التشغيل
 app.listen(PORT, () => {
